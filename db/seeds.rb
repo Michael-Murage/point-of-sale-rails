@@ -12,28 +12,29 @@ schedule = %w!Mondays Tuesdays Wednesdays Thursdays Fridays Weekends!
 items = %w!Angels_braids Darling_braids Sugar_baby Polo_sport Pink_chiffon Escada_taj Moulding_gel Refill_bottles Al_rehab_perfumes Rexona_rollons!
 
 puts "Seeding data..."
-for i in 0..category.size
+for i in 0...category.size
 	Category.create(name: category[i])
 	Customer.create(name: Faker::Name.name)
-	User.create(name: Faker::Name.name)
+	User.create(name: Faker::Name.first_name, password: "#{i}", is_admin: false)
 end
 Customer.create(name: 'others')
+User.create!(name: "Mike", password: '240322', is_admin: true)
 
-for i in 0..schedule.size
+for i in 0...schedule.size
 	Supplier.create(
 		name: Faker::Name.name,
-		location: location[rand(1..4)],
+		location: location[rand(0...4)],
 		schedule: schedule[i],
 		user_id: rand(1..4),
 		image: Faker::Company.logo
 	)
 end
 
-for i in 0..items.size
+for i in 0...items.size
 	Item.create(
-		user_id: rand(1..4),
-		supplier_id: rand(1..6),
-		category_id: rand(1..4),
+		user_id: rand(1..category.size),
+		supplier_id: rand(1..schedule.size),
+		category_id: rand(1..category.size),
 		name: items[i],
 		description: Faker::Lorem.sentence(word_count: rand(6..10)),
 		quantity: rand(1..40),
