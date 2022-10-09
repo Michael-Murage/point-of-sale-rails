@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Api::ItemsController < ApplicationController
 	def index
 		render json: Item.all, status: :ok
 	end

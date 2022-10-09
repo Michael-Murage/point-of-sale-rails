@@ -1,4 +1,4 @@
-class SuppliersController < ApplicationController
+class Api::SuppliersController < ApplicationController
 	def index
 		render json: Supplier.all, status: :ok
 	end

@@ -1,4 +1,4 @@
-class CustomersController < ApplicationController
+class Api::CustomersController < ApplicationController
 	def index
 		render json: Customer.all, status: :ok
 	end
