@@ -1,5 +1,5 @@
 class Sale < ApplicationRecord
-	belongs_to :item
+	has_many :items
 	belongs_to :user
 	belongs_to :customer
 	has_many :categories, through: :items

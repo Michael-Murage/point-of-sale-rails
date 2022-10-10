@@ -38,16 +38,17 @@ for i in 0...items.size
 		name: items[i],
 		description: Faker::Lorem.sentence(word_count: rand(6..10)),
 		quantity: rand(1..40),
-		image: Faker::LoremPixel.image(size: "100x100")
+		price: rand(60..300),
+		cost: rand(40...200)
 	)
 end
 
-10.times{
-	Sale.create(
-		user_id: rand(1..4),
-		customer_id: rand(1..5),
-		comment: Faker::Lorem.sentence(word_count: rand(1..4)),
-		item_id: rand(1..10)
-	)
-}
+# 10.times{
+# 	Sale.create(
+# 		user_id: rand(1..4),
+# 		customer_id: rand(1..5),
+# 		comment: Faker::Lorem.sentence(word_count: rand(1..4)),
+# 		item_id: rand(1..10)
+# 	)
+# }
 puts "...done seeding."
