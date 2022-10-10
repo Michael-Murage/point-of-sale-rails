@@ -28,6 +28,7 @@ function App() {
 					<Route path='/' element={<Home/>}/>
 					{/* <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}/> */}
 					<Route path='/signup' element={<Signup/>}/>
+					{/* <Route path='/side' element={<SideBar/>}/> */}
 				</Routes>
 			</BrowserRouter>
     </div>

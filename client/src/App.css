@@ -3,9 +3,43 @@
 	--navy: #06283d;
 	--dark: #256d85;
 	--light: #dff6ff;
+	--red: #ff4040;
 }
 /* bg: var(--blue) */
 * {
   box-sizing: border-box;
+	font-family: Helvetica;
   /* border: solid black 1px;*/
+}
+.items-cont{
+	/* justify-content: flex-start; */
+	/* align-items: flex-start; */
+	flex-wrap: wrap;
+}
+.item{
+	width: 15em;
+	box-shadow: 0px 1px 4px 3px rgba(0,0,0,0.49);
+	text-align: center;
+	align-items: center;
+}
+.item-img{
+	width: 14em;
+	height: auto;
+	margin-top: 2px;
+}
+.cart{
+	flex-direction: row;
+}
+.cart-cont{
+	display: flex;
+	flex-direction: column;
+}
+.sidebar-print{
+	background-color: var(--light);
+	color: var(--navy);
+	border-radius: 10px;
+	margin-left: 5px;
+}
+.remove:hover{
+	color: var(--red);
 }

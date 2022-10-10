@@ -22,12 +22,16 @@ function Login({ setCurrentUser, currentUser }) {
 				const jsonResp = await resp.json()
 				setCurrentUser(jsonResp)
 				toast("Welcome")
+			}else{
+				const error = await resp.json()
+				setErr(error)
 			}
 		} catch (error) {
+			setErr(error)
 			toast("Something went wrong")
 		}
 	}
-	console.log(currentUser);
+	// console.log(currentUser);
 	// console.log(err ? err.errors[0] : 'no error');
 	const handleChange = (e) => {
 		setCred({...cred, [e.target.id]: e.target.value})
