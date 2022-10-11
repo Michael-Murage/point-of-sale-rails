@@ -8,6 +8,8 @@ import Navbar from './Navbar';
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null)
+	const [param, setParam] = useState('')
+	const [data, setData] = useState([])
 
 	useEffect(()=>{
 		fetch('/api/me')
@@ -23,9 +25,10 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-				<Navbar setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+				<Navbar setCurrentUser={setCurrentUser} currentUser={currentUser}
+				 param={param} setParam={setParam} data={data} setData={setData}/>
 				<Routes>
-					<Route path='/' element={<Home/>}/>
+					<Route path='/' element={<Home data={data} setData={setData}/>}/>
 					{/* <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}/> */}
 					<Route path='/signup' element={<Signup/>}/>
 					{/* <Route path='/side' element={<SideBar/>}/> */}

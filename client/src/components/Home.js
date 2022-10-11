@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 
-function Home() {
-	const [data, setData] = useState([])
+function Home({ data, setData }) {
 	const [cart, setCart] = useState([])
 	const [err, setErr] = useState('')
 	// const [tot, setTot] = useState(0)
@@ -74,7 +73,7 @@ function Home() {
 	return (
 		<div className='row '>
 				<div className='col col-sm-3 col-md-3 col-lg-3 sidebar-parent' style={{backgroundColor: "var(--navy)", color: "var(--blue)"}}>
-					<div className='cart-cont'>
+					<div className='cart-cont vh-100'>
 					{
 						cart.map((item, ind) => {
 							return (

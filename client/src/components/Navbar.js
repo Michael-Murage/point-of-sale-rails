@@ -3,7 +3,8 @@ import { FaUserAlt } from 'react-icons/fa'
 import { BiLogOut, BiSearchAlt } from 'react-icons/bi'
 import { BsFillCartPlusFill } from 'react-icons/bs'
 
-function Navbar({ setCurrentUser, currentUser }) {
+function Navbar({ setCurrentUser, currentUser, param, setParam, data, setData }) {
+	
 	const logOutUser = (e) =>{
 		e.preventDefault()
 		fetch('/api/logout',{
@@ -15,16 +16,32 @@ function Navbar({ setCurrentUser, currentUser }) {
 			}
 		})
 	}
+
+	const startSearch = () =>{
+		
+	}
+
+	const handleSearch = (e) =>{
+		setParam(e.target.value)
+
+		const filtered = data.filter(val => val.name.toLowerCase().includes(param))
+		setData(...data, filtered)
+	}
+
 	return (
 		<nav className="navbar navbar-light d-flex" style={{backgroundColor: "var(--navy)"}}>
 		  <a className="navbar-brand" href="#">Navbar</a>
 		 		<div className='d-flex'>
-		      <a className="text-decoration-none mx-2" style={{color: "var(--blue)"}} href="#">
+
+    				<input id="search-focus" type="search" className="form-control" placeholder='Search' onChange={handleSearch} value={param}/>
+
+		      
+						{/* <button data-toggle="tooltip" data-placement="bottom" title="Search"><BiSearchAlt/></button> */}
+					
+					<a className="text-decoration-none mx-2" style={{color: "var(--blue)"}} href="#">
 						<h3 data-toggle="tooltip" data-placement="bottom" title="Sell"><BsFillCartPlusFill/></h3>
 					</a>
-					<a className="text-decoration-none mx-2" style={{color: "var(--blue)"}} href="#">
-						<h3 data-toggle="tooltip" data-placement="bottom" title="Search"><BiSearchAlt/></h3>
-					</a>
+
 					<a className="text-decoration-none mx-2" style={{color: "var(--blue)"}} href="#">
 						<h3 data-toggle="tooltip" data-placement="bottom" title={`user- ${currentUser.name}`}><FaUserAlt/></h3>
 					</a>
