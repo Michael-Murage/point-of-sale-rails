@@ -20,7 +20,6 @@ class Api::ItemsController < ApplicationController
 	# end
 
 	def update_quantity
-		byebug
 		items = params[:items]
 		for i in items
 			temp = Item.find_by(name: i)

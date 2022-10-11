@@ -17,20 +17,22 @@ function Navbar({ setCurrentUser, currentUser, param, setParam, data, setData })
 		})
 	}
 
+	
 	const startSearch = () =>{
 		
 	}
 
 	const handleSearch = (e) =>{
 		setParam(e.target.value)
-
-		const filtered = data.filter(val => val.name.toLowerCase().includes(param))
-		setData(...data, filtered)
 	}
 
 	return (
-		<nav className="navbar navbar-light d-flex" style={{backgroundColor: "var(--navy)"}}>
-		  <a className="navbar-brand" href="#">Navbar</a>
+		<nav className="navbar navbar-light d-flex" style={{backgroundColor: "#fff"}}>
+		  <a className="navbar-brand logo-cont d-flex" href="/">
+				<img className='logo' src={require('../assets/poslogo.png')} alt='logo'/>
+				<h3 className='mt-2 text-primary'>POS</h3>
+			</a>
+
 		 		<div className='d-flex'>
 
     				<input id="search-focus" type="search" className="form-control" placeholder='Search' onChange={handleSearch} value={param}/>

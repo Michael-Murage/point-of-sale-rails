@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
+import { AiOutlineDelete } from 'react-icons/ai'
 
-function Home({ data, setData }) {
+function Home({ data, setData, filtered }) {
 	const [cart, setCart] = useState([])
 	const [err, setErr] = useState('')
 	// const [tot, setTot] = useState(0)
@@ -26,7 +27,7 @@ function Home({ data, setData }) {
 	}
 
 	const addToCart = (id)=>{
-		const item = data.filter(elem=> elem.id === id)
+		const item = data?.filter(elem=> elem.id === id)
 		setCart([...cart].concat(item))
 	}
 
@@ -61,6 +62,10 @@ function Home({ data, setData }) {
 					method: "PATCH",
 					headers: {"Content-Type": "application/json"},
 					body: JSON.stringify({items: items_sold})
+				}).then((res)=>{
+					if(res.ok){
+						data.map(item=> item.quantity -= 1)
+					}
 				})
 			}else{
 				res.json().then(()=>toast('Something went wrong'))
@@ -72,23 +77,29 @@ function Home({ data, setData }) {
 
 	return (
 		<div className='row '>
-				<div className='col col-sm-3 col-md-3 col-lg-3 sidebar-parent' style={{backgroundColor: "var(--navy)", color: "var(--blue)"}}>
-					<div className='cart-cont vh-100'>
+				<div className='col col-sm-3 col-md-3 col-lg-3 sidebar-parent' style={{backgroundColor: "#fff"}}>
+				
+					<div className='cart-cont'>
+						<div className='cart-head'>
+							<p >Product</p>
+							<p className=' price'>Price</p>
+							<p>Delete</p>
+						</div>
 					{
 						cart.map((item, ind) => {
 							return (
 								<div className='row d-flex border cart' key={ind} id={ind}>
 									<p className='col '>{item.name.split('_').join(' ')}</p>
-									<p className='col'>1</p>
-									<p className='col'>{item.price} </p>
-									<button className='btn remove' onClick={()=>removeFromCart(ind)}>Remove</button>
+									<p className='col text-center'>{item.price} </p>
+									<h5 className='remove text-danger px-1' onClick={()=>removeFromCart(ind)}><AiOutlineDelete/></h5>
+									
 								</div>
 							)
 						})
 					}
 					</div>
-				<div className='sidebar-print sticky-bottom'>
-					<p className='ml-2'>Total: {cart[1] ? currentTotal : 0}</p>
+					<div className='sidebar-print '>
+					<p className='text-center'>Total: {cart[1] ? currentTotal : 0}</p>
 					<div className='text-center mt-2'>
 						<button className='btn btn-primary' onClick={generateSale}>Print</button>
 					</div>
@@ -98,16 +109,16 @@ function Home({ data, setData }) {
 			<div className='col col-sm-9 col-md-9 col-lg-9' style={{backgroundColor: "var(--light)"}}>
 				<div className='container-fluid d-flex items-cont'>
 					{
-						(Array.isArray(data) ? data : []).map(item=>{
+						(Array.isArray(filtered) ? filtered : []).map(item=>{
 							return (
-								<div className='card m-2 item' style={{backgroundColor: "var(--blue)", color: "var(--navy)"}} key={item.id} id={item.name} onClick={()=>addToCart(item.id)}>
+								<div className='card m-2 item text-dark mx-4 my-3' style={{backgroundColor: "var(--light)"}} key={item.id} id={item.name} onClick={()=>addToCart(item.id)}>
 									<img src={require('../assets/Veggie.jpeg')} className='item-img' alt='item'/>
-									<h4>{item.quantity} remaining</h4>
-									<h3>{item.name.split('_').join(' ')}</h3>
-									<h4>{item.category.name}</h4>
-									<h4 >Price: Kshs <span style={{color: "var(--light)"}}>{item.price}</span></h4>
+									<h4 className='font-medium'>{item.quantity} remaining</h4>
+									<h3 className='item-name font-medium'>{item.name.split('_').join(' ')}</h3>
+									<h4 className='font-small'>{item.category.name}</h4>
+									<h4 className='font-medium'>Price: Kshs <span style={{color: "black"}}>{item.price}</span></h4>
 									<div >
-										<button className='btn btn-primary' style={{ color: "var(--navy)"}}>Add to cart</button>
+										<button className='btn btn-primary btn-sm text-dark font-medium' style={{backgroundColor: 'orange', color: "var(--navy)"}}>Add to cart</button>
 									</div>
 								</div>
 							)
