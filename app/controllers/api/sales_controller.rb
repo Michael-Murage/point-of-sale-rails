@@ -1,7 +1,7 @@
 class Api::SalesController < ApplicationController
-	# def index
-	# 	render json: Sale.all, status: :ok
-	# end
+	def index
+		render json: Sale.all, status: :ok
+	end
 
 	# def show
 	# 	sale = find_sale
@@ -13,11 +13,11 @@ class Api::SalesController < ApplicationController
 		render json: sale, status: :created
 	end
 
-	# def destroy
-	# 	sale = find_sale
-	# 	sale.destroy
-	# 	render json: {}, status: :accepted
-	# end
+	def destroy
+		sale = find_sale
+		sale.destroy
+		render json: {}, status: :accepted
+	end
 
 	private
 	def find_sale

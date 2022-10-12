@@ -8,6 +8,10 @@
 
 
 /* #A0CCF2 */
+body{
+	padding-left: 2%;
+	padding-right: 1%;
+}
 
 * {
   box-sizing: border-box;
@@ -80,5 +84,20 @@
 }
 .delete-btn{
 	margin-top: 0;
-
+}
+.sidebar-list{
+	list-style: none;
+}
+.sidebar-ul{
+	display: flex;
+	flex-direction: column;
+	padding-left: 0%;
+}
+.sidebar-icons{
+	font-size: 300%;
+	color: #111;
+}
+.sidebar-link{
+	text-decoration: none;
+	color: #111;
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import { AiOutlineDelete } from 'react-icons/ai'
 
-function Home({ data, setData, filtered }) {
+function Home({ data, setData, filtered, currentUser }) {
 	const [cart, setCart] = useState([])
 	const [err, setErr] = useState('')
 	// const [tot, setTot] = useState(0)
@@ -47,7 +47,7 @@ function Home({ data, setData, filtered }) {
 			method: "POST",
 			headers: {"Content-Type": "application/json"},
 			body: JSON.stringify({
-				user_id: cart[0].user_id,
+				user_id: currentUser.id,
 				customer_id: 5,
 				items_sold: `${items_sold}`,
 				total: currentTotal
@@ -77,7 +77,7 @@ function Home({ data, setData, filtered }) {
 
 	return (
 		<div className='row '>
-				<div className='col col-sm-3 col-md-3 col-lg-3 sidebar-parent' style={{backgroundColor: "#fff"}}>
+				<div className='col col-sm-0 col-md-3 col-lg-3 sidebar-parent' style={{backgroundColor: "#fff"}}>
 				
 					<div className='cart-cont'>
 						<div className='cart-head'>
@@ -106,7 +106,7 @@ function Home({ data, setData, filtered }) {
 				</div>
 				
 			</div>
-			<div className='col col-sm-9 col-md-9 col-lg-9' style={{backgroundColor: "var(--light)"}}>
+			<div className='col col-sm-12 col-md-9 col-lg-9' style={{backgroundColor: "var(--light)"}}>
 				<div className='container-fluid d-flex items-cont'>
 					{
 						(Array.isArray(filtered) ? filtered : []).map(item=>{

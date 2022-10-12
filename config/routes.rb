@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	namespace :api do
   	resources :items, only: [:index]
-  	resources :sales, only: [:create]
+  	resources :sales, only: [:create, :destroy, :index]
 		patch '/quantity', to: 'items#update_quantity'
   	# resources :customers
   	# resources :categories
