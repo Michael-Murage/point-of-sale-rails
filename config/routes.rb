@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 		patch '/quantity', to: 'items#update_quantity'
   	# resources :customers
   	# resources :categories
-  	resources :suppliers, only: [:index]
+  	resources :suppliers, only: [:index, :show, :update, :destroy]
   	resources :users, only: [:show]
 		post '/signup', to: 'users#create'
 		get '/me', to: 'users#show'

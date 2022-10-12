@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import Sales from './Sales';
 import SaleView from './SaleView';
 import Suppliers from './Suppliers'
+import SupplierEdit from './SupplierEdit';
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null)
@@ -38,7 +39,8 @@ function App() {
 					<Route path='/signup' element={<Signup/>}/>
 					<Route path='/sales' element={<Sales currentUser={currentUser}/>}/>
 					<Route path='/sales/:id' element={<SaleView/>}/>
-	  <Route path='/suppliers' element={<Suppliers/>}/>
+	  			<Route path='/suppliers' element={<Suppliers/>}/>
+					<Route path='/supplier/:id' element={<SupplierEdit/>}/>
 				</Routes>
 			</BrowserRouter>
     </div>
