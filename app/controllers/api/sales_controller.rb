@@ -3,10 +3,10 @@ class Api::SalesController < ApplicationController
 		render json: Sale.all, status: :ok
 	end
 
-	# def show
-	# 	sale = find_sale
-	# 	render json: sale, status: :ok
-	# end
+	def show
+		sale = find_sale
+		render json: sale, status: :ok
+	end
 
 	def create
 		sale = Sale.create(sale_params)

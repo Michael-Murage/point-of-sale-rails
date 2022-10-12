@@ -6,6 +6,7 @@ import SideBar from './SideBar'
 function Sales({ currentUser }) {
 	const [sales, setSales] = useState([])
 	const [param, setParam] = useState('')
+	const navigate = useNavigate()
 	
 	const filtered = (Array.isArray(sales) ? sales : []).filter(par=> par.user.name.toLowerCase().includes(param.toLowerCase()))
 
@@ -39,8 +40,8 @@ function Sales({ currentUser }) {
 				      <th scope="col">#</th>
 				      <th scope="col">Items</th>
 				      <th scope="col">User</th>
-				      <th scope="col">Date</th>
-				      <th scope="col">Time</th>
+				      {/* <th scope="col">Date</th>
+				      <th scope="col">Time</th> */}
 				      <th scope="col">Total</th>
 				    </tr>
 				  </thead>
@@ -48,12 +49,12 @@ function Sales({ currentUser }) {
 						{
 						(Array.isArray(filtered) ? filtered : []).map((item, ind)=>{
 							return(
-								<tr>
+								<tr key={item.id} title='Click to view' className='table-row' onClick={()=>navigate(`/sales/${item.id}`)}>
 									<th scope="row">{ind + 1}</th>
     							<td>{item.items_sold}</td>
 									<td>{item.user.name}</td>
-									<td>{item.created_at.slice(0, 10)}</td>
-									<td>{item.created_at.slice(11, 16)}</td>
+									{/* <td>{item.created_at.slice(0, 10)}</td>
+									<td>{item.created_at.slice(11, 16)}</td> */}
 									<td>{item.total}</td>
 								</tr>
 							)

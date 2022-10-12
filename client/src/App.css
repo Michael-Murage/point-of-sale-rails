@@ -101,3 +101,17 @@ body{
 	text-decoration: none;
 	color: #111;
 }
+.table-row{
+	cursor: pointer;
+}
+.table-row:hover{
+	background-color: #333;
+	color: #eee;
+}
+.sale-view-btn{
+	display: flex;
+	justify-content: space-evenly;
+}
+.sale-view{
+	width: 50%;
+}

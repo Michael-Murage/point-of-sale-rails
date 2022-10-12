@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import Signup from './Signup';
 import Navbar from './Navbar';
 import Sales from './Sales';
+import SaleView from './SaleView';
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null)
@@ -35,6 +36,7 @@ function App() {
 					{/* <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}/> */}
 					<Route path='/signup' element={<Signup/>}/>
 					<Route path='/sales' element={<Sales currentUser={currentUser}/>}/>
+					<Route path='/sales/:id' element={<SaleView/>}/>
 				</Routes>
 			</BrowserRouter>
     </div>
