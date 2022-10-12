@@ -131,3 +131,20 @@ body{
 .supplier-card{
 	width: 200px;
 }
+.update-supplier{
+	display: flex;
+	justify-content: space-around;
+}
+.login-img{
+	width: 35em;
+	height: 30em;
+	padding-top: 90px;
+	padding-left: 40px;
+}
+.login-form{
+	width: 40em;
+	height: 25em;
+	border-radius: 20px;
+	margin-left: 150px;
+	margin-top: 100px;
+}

@@ -15,7 +15,7 @@ class Api::SuppliersController < ApplicationController
 
 	def update
 		sup = find_sup
-		sup.update!(sale_params)
+		sup.update!(supplier_params)
 		render json: sup, status: :accepted
 	end
 
@@ -31,6 +31,6 @@ class Api::SuppliersController < ApplicationController
 	end
 
 	def supplier_params
-		params.permit()
+		params.permit(:name, :image, :location, :schedule)
 	end
 end
