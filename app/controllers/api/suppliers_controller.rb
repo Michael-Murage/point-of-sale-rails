@@ -1,7 +1,7 @@
 class Api::SuppliersController < ApplicationController
-	# def index
-	# 	render json: Supplier.all, status: :ok
-	# end
+	def index
+		render json: Supplier.all, status: :ok
+	end
 
 	# def show
 	# 	sup = find_sup

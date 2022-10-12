@@ -7,6 +7,7 @@ import Signup from './Signup';
 import Navbar from './Navbar';
 import Sales from './Sales';
 import SaleView from './SaleView';
+import Suppliers from './Suppliers'
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null)
@@ -37,6 +38,7 @@ function App() {
 					<Route path='/signup' element={<Signup/>}/>
 					<Route path='/sales' element={<Sales currentUser={currentUser}/>}/>
 					<Route path='/sales/:id' element={<SaleView/>}/>
+	  <Route path='/suppliers' element={<Suppliers/>}/>
 				</Routes>
 			</BrowserRouter>
     </div>
