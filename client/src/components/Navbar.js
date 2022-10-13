@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaUserAlt } from 'react-icons/fa'
-import { BiLogOut, BiSearchAlt } from 'react-icons/bi'
+import { BiCategory, BiLogOut, BiSearchAlt } from 'react-icons/bi'
 import { BsFillCartPlusFill } from 'react-icons/bs'
 import { useLocation } from 'react-router-dom'
 
@@ -39,6 +39,9 @@ function Navbar({ setCurrentUser, currentUser, param, setParam, data, setData })
 
 		      
 						{/* <button data-toggle="tooltip" data-placement="bottom" title="Search"><BiSearchAlt/></button> */}
+					<a className="text-decoration-none mx-2" style={{color: "var(--blue)"}} href="/sales">
+						<h3 data-toggle="tooltip" data-placement="bottom" title="Main menu"><BiCategory/></h3>
+					</a>
 					
 					<a className="text-decoration-none mx-2" style={{color: "var(--blue)"}} href="/">
 						<h3 data-toggle="tooltip" data-placement="bottom" title="Sell"><BsFillCartPlusFill/></h3>

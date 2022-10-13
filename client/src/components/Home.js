@@ -111,7 +111,7 @@ function Home({ data, setData, filtered, currentUser }) {
 					{
 						(Array.isArray(filtered) ? filtered : []).map(item=>{
 							return (
-								<div className='card m-2 item text-dark mx-4 my-3' style={{backgroundColor: "var(--light)"}} key={item.id} id={item.name} onClick={()=>addToCart(item.id)}>
+								<div className='card item text-dark mx-3 my-3' style={{backgroundColor: "var(--light)"}} key={item.id} id={item.name} onClick={()=>addToCart(item.id)}>
 									<img src={require('../assets/Veggie.jpeg')} className='item-img' alt='item'/>
 									<h4 className='font-medium'>{item.quantity} remaining</h4>
 									<h3 className='item-name font-medium'>{item.name.split('_').join(' ')}</h3>

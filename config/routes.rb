@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   	# resources :customers
   	# resources :categories
   	resources :suppliers, only: [:index, :show, :update, :destroy]
-  	resources :users, only: [:show]
+  	resources :users, only: [:show, :index, :update, :destroy]
+		get '/user/:id', to: 'users#showUser'
 		post '/signup', to: 'users#create'
 		get '/me', to: 'users#show'
 		post '/login', to: 'sessions#create'

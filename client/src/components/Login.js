@@ -47,14 +47,14 @@ function Login({ setCurrentUser, currentUser }) {
 									
 
 													<h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-													<p className="text-dark-50 mb-5">Please enter your login and password!</p>
+													<p className="text-dark-50 mb-4">Please enter your login and password!</p>
 
-													<div className="form-outline form-white mb-4">
+													<div className="form-outline form-white mb-3">
 														<input type="text" id="name" value={cred.name} onChange={handleChange} className="form-control form-control-lg" />
 														<label className="form-label" htmlFor="name">Email or Username</label>
 													</div>
 
-													<div className="form-outline form-white mb-4">
+													<div className="form-outline form-white mb-2">
 														<input type="password" id="password" value={cred.password} onChange={handleChange} className="form-control form-control-lg" />
 														<label className="form-label" htmlFor="password">Password</label>
 													</div>
@@ -64,7 +64,7 @@ function Login({ setCurrentUser, currentUser }) {
 															{err ? err.errors[0] : null}
 														</div>
 													</div>
-													<button className="btn btn-outline-light btn-lg px-5" style={{backgroundColor: '#5C8DD7'}} type="submit" >Login</button>
+													<button className="btn btn-outline-light btn-lg px-5 mb-2" style={{backgroundColor: '#5C8DD7'}} type="submit" >Login</button>
 													<ToastContainer/>
 												{/* </div> */}
 											

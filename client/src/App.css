@@ -104,7 +104,7 @@ body{
 .table-row{
 	cursor: pointer;
 }
-.table-row:hover{
+.table-row:hover, .user-cont:hover{
 	background-color: #333;
 	color: #eee;
 }
@@ -147,4 +147,8 @@ body{
 	border-radius: 20px;
 	margin-left: 150px;
 	margin-top: 100px;
+}
+.user-cont{
+	flex-direction: row;
+	justify-content: space-between;
 }
