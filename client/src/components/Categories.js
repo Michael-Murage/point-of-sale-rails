@@ -60,6 +60,7 @@ function Categories() {
 				toast('Something went wrong with your request')
 			}
 		})
+		.catch((errors)=>toast(errors.errors[1]))
 	}
 
 	const handleChange = (e) =>{

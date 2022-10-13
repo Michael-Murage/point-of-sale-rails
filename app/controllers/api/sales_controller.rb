@@ -9,7 +9,7 @@ class Api::SalesController < ApplicationController
 	end
 
 	def create
-		sale = Sale.create(sale_params)
+		sale = Sale.create!(sale_params)
 		render json: sale, status: :created
 	end
 

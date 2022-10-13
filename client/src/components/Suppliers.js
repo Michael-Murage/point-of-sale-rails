@@ -37,7 +37,7 @@ function Suppliers(){
 						(Array.isArray(sup) ? sup : []).map((per)=>{
 							return (
 								<div key={per.id} className='card mx-2 my-2 supplier-card'>
-									<img src={require('../assets/dummy-img.png')} alt={per.name} className='supplier-img img-fluid'/>
+									<img src={!per.image ? require('../assets/dummy-img.png') : per.image} alt={per.name} className='supplier-img img-fluid'/>
 									<p className='px-3 mb-0'><strong>Name:</strong> {per.name}</p>
 									<p className='px-3 mb-0'><strong>From:</strong> {per.location}</p>
 									<p className='px-3 mb-0'><strong>Schedule:</strong> {per.schedule}</p>
