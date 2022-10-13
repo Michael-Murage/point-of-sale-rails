@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import SideBar from './SideBar'
 
 function Categories() {
+	const navigate = useNavigate()
 	const [cats, setCats] = useState([])
 	const [cat, setCat] = useState({
 		name: ''
@@ -11,6 +13,14 @@ function Categories() {
 	const [idTrack, setIdTrack] = useState(0)
 
 	useEffect(()=>{
+		fetch('/api/auth')
+		.then(res=>{
+			if(res.status === 401){
+				navigate('/')
+				toast('User is not authorized')
+			}
+		})
+
 		fetch('/api/categories')
 		.then(res=>{
 			if(res.ok){

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import SideBar from './SideBar'
 
 function SupplierEdit() {
@@ -9,6 +9,14 @@ function SupplierEdit() {
 	const [sup, setSup] = useState({})
 
 	useEffect(()=>{
+		fetch('/api/auth')
+		.then(res=>{
+			if(res.status === 401){
+				navigate('/')
+				toast('User is not authorized')
+			}
+		})
+
 		fetch(`/api/suppliers/${id}`)
 		.then(res=>{
 			if(res.ok){
@@ -94,6 +102,7 @@ function SupplierEdit() {
 						<button className="btn btn-danger btn-block mb-4" onClick={deleteSupplier}>Delete</button>
 					</div>
 				</form>
+				<ToastContainer/>
 			</div>
 		</div>
 	)

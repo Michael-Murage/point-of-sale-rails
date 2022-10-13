@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import SideBar from './SideBar'
 
@@ -10,9 +11,18 @@ function Users() {
 		password: '',
 		is_admin: '',
 	})
+	const navigate = useNavigate()
 	const [idTrack, setIdTrack] = useState(0)
 
 	useEffect(()=>{
+		fetch('/api/auth')
+		.then(res=>{
+			if(res.status === 401){
+				navigate('/')
+				toast('User is not authorized')
+			}
+		})
+
 		fetch('/api/users')
 		.then(res=>{
 			if(res.ok){

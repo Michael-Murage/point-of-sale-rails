@@ -12,6 +12,14 @@ function Sales({ currentUser }) {
 	const filtered = (Array.isArray(sales) ? sales : []).filter(par=> par.user.name.toLowerCase().includes(param.toLowerCase()))
 
 	useEffect(()=>{
+		fetch('/api/auth')
+		.then(res=>{
+			if(res.status === 401){
+				navigate('/')
+				toast('User is not authorized')
+			}
+		})
+		
 		fetch('/api/sales')
 		.then((res)=>{
 			if(res.ok){

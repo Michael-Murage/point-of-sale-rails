@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SideBar from './SideBar'
 import { toast, ToastContainer } from 'react-toastify'
 
 function NewSupplier({ currentUser }) {
+	const navigate = useNavigate()
+	useEffect(()=>{
+		fetch('/api/auth')
+		.then(res=>{
+			if(res.status === 401){
+				navigate('/')
+				toast('User is not authorized')
+			}
+		})
+	}, [])
+
 	const [sup, setSup] = useState({
 		location: '',
 		name: '',
@@ -11,7 +22,6 @@ function NewSupplier({ currentUser }) {
 		image: '',
 		user_id: currentUser.id
 	})
-	const navigate = useNavigate()
 
 	const handleChange = (e) =>{
 		setSup({...sup, [e.target.id]: e.target.value})

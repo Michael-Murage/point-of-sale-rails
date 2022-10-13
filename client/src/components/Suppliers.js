@@ -9,6 +9,14 @@ function Suppliers(){
 	const navigate = useNavigate()
 
 	useEffect(()=>{
+		fetch('/api/auth')
+		.then(res=>{
+			if(res.status === 401){
+				navigate('/')
+				toast('User is not authorized')
+			}
+		})
+		
 		fetch('/api/suppliers')
 		.then(res=>{
 			if(res.ok){

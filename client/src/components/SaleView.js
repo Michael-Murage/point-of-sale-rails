@@ -12,6 +12,14 @@ function SaleView() {
 	const [record, setRecord] = useState({})
 
 	useEffect(()=>{
+		fetch('/api/auth')
+		.then(res=>{
+			if(res.status === 401){
+				navigate('/')
+				toast('User is not authorized')
+			}
+		})
+		
 		fetch(`/api/sales/${id}`)
 		.then(res=>{
 			if(res.ok){
