@@ -10,6 +10,7 @@ function Users() {
 		name: '',
 		password: '',
 		is_admin: '',
+		email: ''
 	})
 	const navigate = useNavigate()
 	const [idTrack, setIdTrack] = useState(0)
@@ -59,6 +60,7 @@ function Users() {
 					name: '',
 					password: '',
 					is_admin: '',
+					email: ''
 				})
 			}else{
 				toast('Something went wrong with your request')
@@ -98,6 +100,7 @@ function Users() {
 					name: '',
 					password: '',
 					is_admin: '',
+					email: ''
 				})
 			}else{
 				toast('Something went wrong with your request')
@@ -138,6 +141,10 @@ function Users() {
 						<div className="form-outline mb-4">
 				  	  <input type="password" id="password" className="form-control" onChange={handleChange} value={user?.password}/>
 				  		  <label className="form-label" htmlFor="password">Password</label>
+			  		</div>
+						<div className="form-outline mb-4">
+				  	  <input type="email" id="email" className="form-control" onChange={handleChange} value={user?.email}/>
+				  		  <label className="form-label" htmlFor="email">Email</label>
 			  		</div>
 						
 						<label className="form-label mb-2" htmlFor="is_admin">User status</label>

@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
 		@user = User.new(user_params)
 		# byebug
 		if @user.save
-			UserMailer.with(user: @user).new_order_email.deliver_now
+			UserMailer.with(user: @user).new_user.deliver_now
 			render json: {success: "User has been created"}
 		else
 			render json: {error: "There seems to be a problem with your request"}
