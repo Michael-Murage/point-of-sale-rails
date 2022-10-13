@@ -8,10 +8,10 @@ class Api::SuppliersController < ApplicationController
 		render json: sup, status: :ok
 	end
 
-	# def create
-	# 	sup = Supplier.create!(sale_params)
-	# 	render json: sup, status: :created
-	# end
+	def create
+		sup = Supplier.create!(supplier_params)
+		render json: sup, status: :created
+	end
 
 	def update
 		sup = find_sup
@@ -31,6 +31,6 @@ class Api::SuppliersController < ApplicationController
 	end
 
 	def supplier_params
-		params.permit(:name, :image, :location, :schedule)
+		params.permit(:name, :image, :location, :schedule, :user_id)
 	end
 end

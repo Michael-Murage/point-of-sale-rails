@@ -126,7 +126,6 @@ body{
 }
 .update-btn{
 	background-color: orange;
-
 }
 .supplier-card{
 	width: 200px;
@@ -155,4 +154,7 @@ body{
 .category-user-btns{
 	display: flex;
 	justify-content: space-around;
+}
+.newsupplier-btn:hover{
+	background-color: white !important;
 }

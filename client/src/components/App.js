@@ -11,6 +11,7 @@ import Suppliers from './Suppliers'
 import SupplierEdit from './SupplierEdit';
 import Users from './Users';
 import Categories from './Categories';
+import NewSupplier from './NewSupplier';
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null)
@@ -43,6 +44,7 @@ function App() {
 					<Route path='/sales/:id' element={<SaleView/>}/>
 	  			<Route path='/suppliers' element={<Suppliers/>}/>
 					<Route path='/supplier/:id' element={<SupplierEdit/>}/>
+					<Route path='/new-supplier' element={<NewSupplier currentUser={currentUser}/>}/>
 					<Route path='/users' element={<Users/>}/>
 					<Route path='/categories' element={<Categories/>}/>
 				</Routes>

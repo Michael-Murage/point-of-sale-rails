@@ -33,8 +33,9 @@ function Suppliers(){
 									<p className='px-3 mb-0'><strong>Name:</strong> {per.name}</p>
 									<p className='px-3 mb-0'><strong>From:</strong> {per.location}</p>
 									<p className='px-3 mb-0'><strong>Schedule:</strong> {per.schedule}</p>
-									<div className='text-center mb-1'>
-										<button className='btn btn-sm update-btn my-2' onClick={()=>navigate(`/supplier/${per.id}`)}>Update details</button>
+									<div className=' mb-1 supplier-btn'>
+										<button className='btn btn-sm update-btn mt-2' onClick={()=>navigate(`/supplier/${per.id}`)}>Update details</button>
+										<button className='btn btn-sm my-1 btn-primary text-black newsupplier-btn' onClick={()=>navigate(`/new-supplier`)}>New Supplier</button>
 									</div>
 									<ToastContainer/>
 								</div>
