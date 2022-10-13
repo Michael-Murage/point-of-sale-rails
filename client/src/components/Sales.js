@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import SideBar from './SideBar'
+import Loading from './Loading'
 
 function Sales({ currentUser }) {
 	const [sales, setSales] = useState([])
@@ -26,8 +27,8 @@ function Sales({ currentUser }) {
 		setParam(e.target.value)
 	}
 
-	// console.log(typeof sales[0].created_at);
-	return (
+	try {
+		return (
 		<div className='row'>
 			<SideBar/>
 			<div className='col col-sm-9 col-md-9 col-lg-9 bg-light vh-100'>
@@ -69,6 +70,10 @@ function Sales({ currentUser }) {
 			<ToastContainer/>
 		</div>
 	)
+	} catch (error) {
+		return <Loading/>
+	}
+	
 }
 
 export default Sales
