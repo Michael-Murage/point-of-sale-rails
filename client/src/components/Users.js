@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai'
-import { GrEdit } from 'react-icons/gr'
 import { toast, ToastContainer } from 'react-toastify'
 import SideBar from './SideBar'
 
@@ -68,10 +67,31 @@ function Users() {
 		.then(res=>{
 			if(res.ok){
 				toast('User has been deleted successfully')
+				users.filter(user=> user.id !== id)
 			}
 			// else{
 			// 	toast('Something went wrong with your request')
 			// }
+		})
+	}
+
+	const addNew = () =>{
+		fetch('/api/users',{
+			method: "POST",
+			headers: {"Content-Type": "application/json"},
+			body: JSON.stringify(user)
+		})
+		.then(res=>{
+			if(res.ok){
+				toast('User has been added successfully')
+				setUser({
+					name: '',
+					password: '',
+					is_admin: '',
+				})
+			}else{
+				toast('Something went wrong with your request')
+			}
 		})
 	}
 
@@ -117,7 +137,10 @@ function Users() {
 							<option value={false}>User</option>
 						</select>
 						
-						<input type='submit' className="btn btn-warning btn-sm mt-3" value='Update'/>
+						<div className='mt-3 category-user-btns'>
+							<input type='submit' className="btn btn-warning btn-sm" value='Update'/>
+							<button className='btn btn-primary btn-sm' onClick={addNew}>New</button>
+						</div>
 					</form>
 			</div>
 			<ToastContainer/>
