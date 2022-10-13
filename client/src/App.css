@@ -39,7 +39,8 @@ body{
 }
 .item-img{
 	width: 12em;
-	height: auto;
+	height: 12em;
+	/* 190px */
 }
 .item-name{
 	font-weight: 700;
