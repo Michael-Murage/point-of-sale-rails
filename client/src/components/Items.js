@@ -64,7 +64,7 @@ function Items() {
 									<th scope="row">{ind + 1}</th>
     							<td>{item.name}</td>
 									<td>{item.category.name}</td>
-									<td>{!item.image ? "No image" : item.image}</td>
+									<td>{!item.image ? "No image" : item.image.slice(0, 20)}</td>
 									<td>{item.supplier.name}</td>
 									<td>{item.quantity}</td>
 									<td>{item.cost}</td>

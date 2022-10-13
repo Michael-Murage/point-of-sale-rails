@@ -13,6 +13,7 @@ import Categories from './Categories';
 import NewSupplier from './NewSupplier';
 import Items from './Items';
 import ItemEdit from './ItemEdit';
+import NewItem from './NewItem';
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null)
@@ -48,6 +49,7 @@ function App() {
 					<Route path='/categories' element={<Categories/>}/>
 					<Route path='/items' element={<Items/>}/>
 					<Route path='/items/:id' element={<ItemEdit/>}/>
+					<Route path='/new-item' element={<NewItem currentUser={currentUser}/>}/>
 				</Routes>
 			</BrowserRouter>
     </div>

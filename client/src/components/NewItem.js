@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import SideBar from './SideBar'
 import { toast, ToastContainer } from 'react-toastify'
 import Loading from './Loading'
-import SideBar from './SideBar'
 
-function ItemEdit() {
-	const {id} = useParams()
+function NewItem({ currentUser }) {
 	const navigate = useNavigate()
 	const [category, setCategory] = useState([])
 	const [supplier, setSupplier] = useState([])
-	const [item, setItem] = useState({})
+	const [item, setItem] = useState({
+		user_id: currentUser.id,
+		supplier_id: 0,
+		category_id: 0,
+		name: '',
+		description: '',
+		image: '',
+		quantity: 0,
+		price: 0,
+		cost: 0
+	})
 
 	useEffect(()=>{
 		fetch('/api/auth')
@@ -17,16 +26,6 @@ function ItemEdit() {
 			if(res.status === 401){
 				navigate('/')
 				toast('User is not authorized')
-			}
-		})
-
-		fetch(`/api/items/${id}`)
-		.then(res=>{
-			if(res.ok){
-				res.json().then(setItem)
-			}else{
-				toast('Something went wrong with your request')
-				navigate('/items')
 			}
 		})
 
@@ -48,47 +47,37 @@ function ItemEdit() {
 			}
 		})
 
-	},[])
+	}, [])
 
-	const updateItem = (e) =>{
+	const handleChange = (e) =>{
+		setItem({...item, [e.target.id]: e.target.value})
+	}
+
+	const addNewItem = (e) =>{
 		e.preventDefault()
-
-		fetch(`/api/items/${id}`,{
-			method: "PATCH",
+		fetch('/api/items',{
+			method: "POST",
 			headers: {"Content-Type": "application/json"},
 			body: JSON.stringify(item)
 		})
 		.then(res=>{
 			if(res.ok){
-				toast('Product edited successfully')
-				navigate('/items')
+				toast('Product has been added successfully')
+				setItem({
+					user_id: currentUser.id,
+					supplier_id: 0,
+					category_id: 0,
+					name: '',
+					description: '',
+					image: '',
+					quantity: 0,
+					price: 0,
+					cost: 0
+				})
 			}else{
-				toast("Something went wrong with your request")
-				navigate('/items')
+				toast('Something went wrong with your request')
 			}
 		})
-	}
-
-	const deleteItem = (e) =>{
-		e.preventDefault()
-		fetch(`/api/items/${id}`, {
-			method: "DELETE"
-		})
-		.then(res=>{
-			if(res.ok){
-				res.json().then(()=>toast("Product deleted successfully"))
-				navigate('/items')
-			}else{
-				toast("Something went wrong with your request")
-				navigate('/items')
-			}
-		})
-	}
-
-	const handleChange = (e) =>{
-		setItem({...item, [e.target.id]: e.target.value})
-		// setCategory({...category, [e.target.id]: e.target.value})
-		// setSupplier({...supplier, [e.target.id]: e.target.value})
 	}
 
 	try {
@@ -96,7 +85,7 @@ function ItemEdit() {
 		<div className='row'>
 			<SideBar/>
 			<div className='col col-sm-10 col-xs-10 col-md-9 col-lg-9 bg-light container'>
-				<form className='pt-5' onSubmit={updateItem}>
+				<form className='pt-5' onSubmit={addNewItem}>
 					<h2>Edit Product Details</h2>
 				  <div className="form-outline mb-4">
 						<label className="form-label" htmlFor="name">Name</label>
@@ -107,7 +96,7 @@ function ItemEdit() {
 
 				  <label className="form-label mb-2" htmlFor="category">Category</label>
 						<select className='form-select' id='category_id' value={item.category_id} onChange={handleChange} aria-label='category'>
-							
+							<option>Select item</option>
 							{
 								(Array.isArray(category) ? category : []).map(cat=>{
 									return (
@@ -131,7 +120,7 @@ function ItemEdit() {
 
 					<label className="form-label mt-4" htmlFor="supplier">Supplier</label>
 						<select className='form-select' id='supplier_id' value={item.supplier_id} onChange={handleChange} aria-label='supplier'>
-							
+							<option>Select item</option>
 							{
 								(Array.isArray(supplier) ? supplier : []).map(cat=>{
 									return (
@@ -160,8 +149,7 @@ function ItemEdit() {
 			  	</div>
 
 					<div className='update-supplier'>
-				  	<button type="submit" className="btn btn-primary btn-block mt-4">Update</button>
-						<button className="btn btn-danger btn-block mt-4" onClick={deleteItem}>Delete</button>
+				  	<button type="submit" className="btn btn-primary btn-block mt-4">Submit</button>
 					</div>
 				</form>
 				<ToastContainer/>
@@ -171,8 +159,6 @@ function ItemEdit() {
 	} catch (error) {
 		return <Loading/>
 	}
-
-	
 }
 
-export default ItemEdit
+export default NewItem
