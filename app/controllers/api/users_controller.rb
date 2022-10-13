@@ -1,8 +1,14 @@
 class Api::UsersController < ApplicationController
 	# skip_before_action :authorized, only: :create
 	def create
-		user = User.create!(user_params)
-		render json: user, status: :created
+		@user = User.new(user_params)
+		# byebug
+		if @user.save
+			UserMailer.with(user: @user).new_order_email.deliver_now
+			render json: {success: "User has been created"}
+		else
+			render json: {error: "There seems to be a problem with your request"}
+		end
 	end
 
 	def show
@@ -38,6 +44,6 @@ class Api::UsersController < ApplicationController
 	end
 
 	def user_params
-		params.permit(:name, :is_admin, :image, :password)
+		params.permit(:name, :is_admin, :image, :password, :email)
 	end
 end
