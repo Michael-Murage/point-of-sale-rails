@@ -12,4 +12,5 @@ class Item < ApplicationRecord
 	validates :price, numericality: {greater_than: 0}
 	validates :cost, numericality: {greater_than: 0}
 	validates :name, uniqueness: true
+	validates :name, length: {maximum: 18}
 end

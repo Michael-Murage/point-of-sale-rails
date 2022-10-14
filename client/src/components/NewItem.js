@@ -46,7 +46,7 @@ function NewItem({ currentUser }) {
 				toast('Something went wrong with your request')
 			}
 		})
-
+	// eslint-disable-next-line
 	}, [])
 
 	const handleChange = (e) =>{
@@ -75,7 +75,7 @@ function NewItem({ currentUser }) {
 					cost: 0
 				})
 			}else{
-				toast('Something went wrong with your request')
+				res.json().then(err => toast(err.errors[0]))
 			}
 		})
 	}

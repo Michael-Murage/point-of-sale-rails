@@ -16,9 +16,11 @@ function Home({ data, setData, filtered, currentUser }) {
 				res.json().then(setData)
 			}else{
 				res.json().then(setErr)
+				toast(err)
 			}
 		})
 		.catch(err => setErr(err))
+	// eslint-disable-next-line
 	},[])
 
 	const removeFromCart = (id)=>{
