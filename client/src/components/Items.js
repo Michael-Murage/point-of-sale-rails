@@ -83,8 +83,8 @@ function Items() {
 		</div>
 	)
 	} catch (error) {
-		// return <Loading/>
-		toast(error.errors[0])
+		return <Loading/>
+		// toast(error.errors[0])
 	}
 }
 
