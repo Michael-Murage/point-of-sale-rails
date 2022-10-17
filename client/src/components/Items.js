@@ -48,9 +48,9 @@ function Items() {
 				    <tr>
 				      <th scope="col">#</th>
 				      <th scope="col">Name</th>
-				      <th scope="col">Category</th>
+				      {/* <th scope="col">Category</th> */}
 				      <th scope="col">Image</th>
-				      <th scope="col">Supplier</th>
+				      {/* <th scope="col">Supplier</th> */}
 				      <th scope="col">Quantity</th>
 				      <th scope="col">Cost</th>
 				      <th scope="col">Price</th>
@@ -63,9 +63,9 @@ function Items() {
 								<tr key={item.id} title='Click to view' className='table-row' onClick={()=>navigate(`/items/${item.id}`)}>
 									<th scope="row">{ind + 1}</th>
     							<td>{item.name}</td>
-									<td>{item.category.name}</td>
+									{/* <td>{item.category_id}</td> */}
 									<td>{!item.image ? "No image" : item.image.slice(0, 20)}</td>
-									<td>{item.supplier.name}</td>
+									{/* <td>{item.supplier_id}</td> */}
 									<td>{item.quantity}</td>
 									<td>{item.cost}</td>
 									<td>{item.price}</td>

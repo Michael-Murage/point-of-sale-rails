@@ -1,12 +1,12 @@
 class Api::ItemsController < ApplicationController
 	def index
 		item = Item.all
-		render json: item, each_serializer: ItemShowSerializer,  status: :ok
+		render json: item, status: :ok
 	end
 
 	def show
 		item = find_item
-		render json: item, status: :ok
+		render json: item, serializer: ItemShowSerializer, status: :ok
 	end
 
 	def create
