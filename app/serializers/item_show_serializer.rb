@@ -1,3 +1,5 @@
 class ItemShowSerializer < ActiveModel::Serializer
-  attributes :id, :category_id, :name, :image, :quantity, :price, :cost, :user_id, :supplier_id, :description
+  attributes :id, :name, :quantity, :price, :cost, :description, :image
+	belongs_to :category, serializer: CategoryShowSerializer
+	belongs_to :supplier, serializer: SupplierShowSerializer
 end
