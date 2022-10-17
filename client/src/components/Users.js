@@ -133,7 +133,7 @@ function Users() {
 				</div>
 			</div>
 			<div className='col col-sm-3 col-md-3 col-lg-6 bg-white pt-5 text-center'>
-					<form onSubmit={updateInfo}>
+					<form >
 						<div className="form-outline mb-4">
 				  	  <input type="text" id="name" className="form-control" onChange={handleChange} value={user?.name}/>
 				  		  <label className="form-label" htmlFor="name">Name</label>
@@ -155,7 +155,7 @@ function Users() {
 						</select>
 						
 						<div className='mt-3 category-user-btns'>
-							<input type='submit' className="btn btn-warning btn-sm" value='Update'/>
+							<input type='submit' className="btn btn-warning btn-sm" onClick={updateInfo} value='Update'/>
 							<button className='btn btn-primary btn-sm' onClick={addNew}>New</button>
 						</div>
 					</form>

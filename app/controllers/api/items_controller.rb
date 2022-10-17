@@ -5,7 +5,7 @@ class Api::ItemsController < ApplicationController
 
 	def show
 		item = find_item
-		render json: item, status: :ok
+		render json: item, status: :ok, serializer: ItemShowSerializer
 	end
 
 	def create
