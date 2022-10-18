@@ -111,7 +111,7 @@ function Home({ data, setData, filtered, currentUser }) {
 			<div className='col col-sm-12 col-md-9 col-lg-9' style={{backgroundColor: "var(--light)"}}>
 				<div className='container-fluid d-flex items-cont'>
 					{
-						(Array.isArray(filtered) ? filtered : []).map(item=>{
+						(Array.isArray(filtered) ? filtered : [])?.map(item=>{
 							return (
 								<div className='card item text-dark mx-3 my-3' style={{backgroundColor: "var(--light)"}} key={item.id} id={item.name} onClick={()=>addToCart(item.id)}>
 									<img src={!item.image ? require('../assets/Veggie.jpeg') : item.image} className='item-img' alt='item'/>
