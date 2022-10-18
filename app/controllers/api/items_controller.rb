@@ -1,4 +1,5 @@
 class Api::ItemsController < ApplicationController
+	skip_before_action :authorized, only: [:index]
 	def index
 		item = Item.all
 		render json: item, each_serializer: ItemShowSerializer, status: :ok
