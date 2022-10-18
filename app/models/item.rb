@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 	validates :supplier_id, numericality: {greater_than: 0}
 	validates :category_id, numericality: {greater_than: 0}
 	validates :name, presence: true
-	validates :quantity, numericality: {greater_than: 0}
+	# validates :quantity, numericality: {greater_than: 0}
 	validates :price, numericality: {greater_than: 0}
 	validates :cost, numericality: {greater_than: 0}
 	validates :name, uniqueness: true
