@@ -2,9 +2,46 @@ import React, { useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import { AiOutlineDelete } from 'react-icons/ai'
 
+const items = document.getElementsByClassName('no-of-items')
+
+function Cart({ item, ind, removeFromCart }) {
+	const [quantVal, setQuantVal] = useState(1)
+
+	const handleQuant = (e) =>{
+		if(e.target.value > 0){
+			setQuantVal(e.target.value)
+		}
+	}
+	return (
+		<div className='row d-flex card cart container my-2' id={ind}>
+			<div className=' col col-sm-3 col-md-3 col-lg-4 px-0 py-2 mx-0 text-center'>
+				<img src={!item.image ? require('../assets/Veggie.jpeg') : item.image} className='cart-img' alt='product image'/>
+			</div>
+			<div className='cart-content col col-sm-9 col-md-9 col-lg-8'>
+				<div className='d-flex mt-1' style={{justifyContent: "space-between"}}>
+					<p className=' ' style={{fontWeight: "bold"}}>{item.name}</p>
+					<h5 className='remove text-dark ml-auto' onClick={()=>removeFromCart(ind)}><AiOutlineDelete/></h5>
+				</div>
+				<div className='d-flex' style={{flexDirection: 'flex-start'}}>
+					<p className=''>Quantity:</p>
+					<input type='number' value={quantVal} onChange={handleQuant} className='form-control mx-3 no-of-items' style={{width: '4em', height: '20px'}}/>
+				</div>
+				<div className='d-flex'>
+					<p>Price:</p> 
+					<p className='mx-1' style={{color: 'orange'}}>{item.price}</p>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+	)
+}
+
 function Home({ data, setData, filtered, currentUser }) {
 	const [cart, setCart] = useState([])
 	const [err, setErr] = useState('')
+	const [quantVal, setQuantVal] = useState(1)
 	// const [tot, setTot] = useState(0)
 
 	let currentTotal = cart.reduce((p, c)=> (p + c.price), 0)
@@ -44,6 +81,7 @@ function Home({ data, setData, filtered, currentUser }) {
 
 		//generate a sales record
 		let items_sold = (cart.map(elem=> elem.name))
+		const number = Object.values(items).map(elem=>elem.value)
 		
 		fetch('/api/sales',{
 			method: "POST",
@@ -63,7 +101,7 @@ function Home({ data, setData, filtered, currentUser }) {
 				fetch('/api/quantity',{
 					method: "PATCH",
 					headers: {"Content-Type": "application/json"},
-					body: JSON.stringify({items: items_sold})
+					body: JSON.stringify({items: items_sold, number: number})
 				}).then((res)=>{
 					if(res.ok){
 						data.map(item=> item.quantity -= 1)
@@ -89,28 +127,7 @@ function Home({ data, setData, filtered, currentUser }) {
 					{
 						cart.map((item, ind) => {
 							return (
-								<div className='row d-flex card cart container my-2' key={ind} id={ind}>
-									<div className=' col col-sm-3 col-md-3 col-lg-4 px-0 py-2 mx-0 text-center'>
-										<img src={!item.image ? require('../assets/Veggie.jpeg') : item.image} className='cart-img' alt='product image'/>
-									</div>
-									<div className='cart-content col col-sm-9 col-md-9 col-lg-8'>
-										<div className='d-flex mt-1' style={{justifyContent: "space-between"}}>
-											<p className=' ' style={{fontWeight: "bold"}}>{item.name}</p>
-											<h5 className='remove text-dark ml-auto' onClick={()=>removeFromCart(ind)}><AiOutlineDelete/></h5>
-										</div>
-										<div className='d-flex' style={{flexDirection: 'flex-start'}}>
-											<p className=''>Quantity:</p>
-											<input type='number' className='form-control mx-3' style={{width: '4em', height: '20px'}}/>
-										</div>
-										<div className='d-flex'>
-											<p>Price:</p> 
-											<p className='mx-1' style={{color: 'orange'}}>{item.price}</p>
-										</div>
-										
-									</div>
-									
-									
-								</div>
+								<Cart item={item} ind={ind} key={ind} removeFromCart={removeFromCart} quantVal={quantVal} setQuantVal={setQuantVal}/>
 							)
 						})
 					}

@@ -23,9 +23,10 @@ class Api::ItemsController < ApplicationController
 
 	def update_quantity
 		items = params[:items]
+		number = params[:number]
 		for i in items
 			temp = Item.find_by(name: i)
-			temp.quantity -= 1
+			temp.quantity -= number[items.index(i)].to_i
 			temp.save
 		end
 
