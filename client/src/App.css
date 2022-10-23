@@ -40,21 +40,37 @@ body{
 .item-img{
 	width: 12em;
 	height: 130px;
-	/* 190px */
 }
 .item-name{
 	font-weight: 700;
 }
+.cart-img-cont{
+	width: 6.5em;
+}
+.cart-img{
+	width: 6.2em;
+	height: 65px;
+}
 .cart{
 	flex-direction: row;
+	border: none;
+	background-color: rgb(244, 239, 239);
+	height: 110px;
+	margin-left: 5px;
+	/* width: 20em; */
+}
+.cart-content{
+	/* width: 19em; */
+	height: 110px
 }
 .cart-head{
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 }
 .cart-cont{
 	display: flex;
 	flex-direction: column;
+	width: auto
 }
 .price{
 	width: 4.8em;
@@ -68,9 +84,6 @@ body{
 }
 .sidebar-parent{
 	color: rgb(82, 80, 80);
-}
-.remove:hover{
-	color: var(--red);
 }
 .remove{
 	width: 1.6em;

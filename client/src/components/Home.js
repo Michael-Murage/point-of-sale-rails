@@ -82,18 +82,33 @@ function Home({ data, setData, filtered, currentUser }) {
 				<div className='col col-sm-0 col-md-3 col-lg-3 sidebar-parent' style={{backgroundColor: "#fff"}}>
 				
 					<div className='cart-cont'>
-						<div className='cart-head'>
-							<p >Product</p>
-							<p className=' price'>Price</p>
-							<p>Delete</p>
+						<div className='cart-head my-2' style={{marginLeft: '5px'}}>
+							<p style={{fontWeight: 'bolder'}}> Your Products</p>
+							<div style={{ height: '4px', backgroundColor: 'orange', width: '5em'}} />
 						</div>
 					{
 						cart.map((item, ind) => {
 							return (
-								<div className='row d-flex border cart' key={ind} id={ind}>
-									<p className='col '>{item.name.split('_').join(' ')}</p>
-									<p className='col text-center'>{item.price} </p>
-									<h5 className='remove text-danger px-1' onClick={()=>removeFromCart(ind)}><AiOutlineDelete/></h5>
+								<div className='row d-flex card cart container my-2' key={ind} id={ind}>
+									<div className=' col col-sm-12 col-md-3 col-lg-4 px-0 py-4 mx-0 text-center cart-img-cont'>
+										<img src={!item.image ? require('../assets/Veggie.jpeg') : item.image} className='cart-img' alt='product image'/>
+									</div>
+									<div className='cart-content col col-sm-12 col-md-9 col-lg-8'>
+										<div className='d-flex mt-1' style={{justifyContent: "space-between"}}>
+											<p className=' ' style={{fontWeight: "bold"}}>{item.name}</p>
+											<h5 className='remove text-dark ml-auto' onClick={()=>removeFromCart(ind)}><AiOutlineDelete/></h5>
+										</div>
+										<div className='d-flex' style={{flexDirection: 'flex-start'}}>
+											<p className=''>Quantity:</p>
+											<input type='number' className='form-control mx-3' style={{width: '4em', height: '20px'}}/>
+										</div>
+										<div className='d-flex'>
+											<p>Price:</p> 
+											<p className='mx-1' style={{color: 'orange'}}>{item.price}</p>
+										</div>
+										
+									</div>
+									
 									
 								</div>
 							)
@@ -101,11 +116,11 @@ function Home({ data, setData, filtered, currentUser }) {
 					}
 					</div>
 					<div className='sidebar-print '>
-					<p className='text-center'>Total: {cart[1] ? currentTotal : 0}</p>
-					<div className='text-center mt-2'>
-						<button className='btn btn-primary' onClick={generateSale}>Print</button>
+						<p className='text-center'>Total: {cart[1] ? currentTotal : 0}</p>
+						<div className='text-center mt-2'>
+							<button className='btn btn-primary' onClick={generateSale}>Print</button>
+						</div>
 					</div>
-				</div>
 				
 			</div>
 			<div className='col col-sm-12 col-md-9 col-lg-9' style={{backgroundColor: "var(--light)"}}>
