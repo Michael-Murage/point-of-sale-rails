@@ -79,7 +79,7 @@ function Home({ data, setData, filtered, currentUser }) {
 
 	return (
 		<div className='row '>
-				<div className='col col-sm-0 col-md-3 col-lg-3 sidebar-parent' style={{backgroundColor: "#fff"}}>
+				<div className='col col-sm-0 col-md-4.5 col-lg-3 sidebar-parent' style={{backgroundColor: "#fff"}}>
 				
 					<div className='cart-cont'>
 						<div className='cart-head my-2' style={{marginLeft: '5px'}}>
@@ -90,10 +90,10 @@ function Home({ data, setData, filtered, currentUser }) {
 						cart.map((item, ind) => {
 							return (
 								<div className='row d-flex card cart container my-2' key={ind} id={ind}>
-									<div className=' col col-sm-12 col-md-3 col-lg-4 px-0 py-4 mx-0 text-center cart-img-cont'>
+									<div className=' col col-sm-3 col-md-3 col-lg-4 px-0 py-2 mx-0 text-center'>
 										<img src={!item.image ? require('../assets/Veggie.jpeg') : item.image} className='cart-img' alt='product image'/>
 									</div>
-									<div className='cart-content col col-sm-12 col-md-9 col-lg-8'>
+									<div className='cart-content col col-sm-9 col-md-9 col-lg-8'>
 										<div className='d-flex mt-1' style={{justifyContent: "space-between"}}>
 											<p className=' ' style={{fontWeight: "bold"}}>{item.name}</p>
 											<h5 className='remove text-dark ml-auto' onClick={()=>removeFromCart(ind)}><AiOutlineDelete/></h5>
@@ -123,7 +123,7 @@ function Home({ data, setData, filtered, currentUser }) {
 					</div>
 				
 			</div>
-			<div className='col col-sm-12 col-md-9 col-lg-9' style={{backgroundColor: "var(--light)"}}>
+			<div className='col col-sm-12 col-md-7.5 col-lg-9' style={{backgroundColor: "var(--light)"}}>
 				<div className='container-fluid d-flex items-cont'>
 					{
 						(Array.isArray(filtered) ? filtered : [])?.map(item=>{
