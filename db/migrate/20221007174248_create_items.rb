@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
 			t.integer :quantity
 			t.integer :price
 			t.integer :cost
+			t.integer :no_to_sell
 
       t.timestamps
     end

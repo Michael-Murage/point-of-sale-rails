@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2022_10_07_174248) do
     t.integer "quantity"
     t.integer "price"
     t.integer "cost"
+    t.integer "no_to_sell"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

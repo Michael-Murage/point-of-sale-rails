@@ -56,7 +56,7 @@ function Sales({ currentUser }) {
 				  </thead>
 				  <tbody>
 						{
-						(Array.isArray(filtered) ? filtered : []).map((item, ind)=>{
+						(Array.isArray(filtered) ? filtered : []).reverse().map((item, ind)=>{
 							return(
 								<tr key={item.id} title='Click to view' className='table-row' onClick={()=>navigate(`/sales/${item.id}`)}>
 									<th scope="row">{ind + 1}</th>
