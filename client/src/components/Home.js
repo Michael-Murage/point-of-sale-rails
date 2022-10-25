@@ -2,18 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import { AiOutlineDelete } from 'react-icons/ai'
 
-const items = document.getElementsByClassName('no-of-items')
+let items = document.getElementsByClassName('no-of-items')
 
-function Cart({ item, ind, removeFromCart }) {
-	const [quantVal, setQuantVal] = useState(1)
-	item.no_to_sell = quantVal
-
-	const handleQuant = (e) =>{
-		if(e.target.value > 0){
-			setQuantVal(e.target.value)
-		}
-	}
-
+function Cart({ item, ind, removeFromCart, onQuanityChange }) {
 	return (
 		<div className='row d-flex card cart container my-2' id={ind}>
 			<div className=' col col-sm-3 col-md-3 col-lg-4 px-0 py-2 mx-0 text-center'>
@@ -26,11 +17,11 @@ function Cart({ item, ind, removeFromCart }) {
 				</div>
 				<div className='d-flex' style={{flexDirection: 'flex-start'}}>
 					<p>Quantity:</p>
-					<input type='number' value={quantVal} onChange={handleQuant} className='form-control mx-3 no-of-items' style={{width: '4em', height: '20px'}}/>
+					<input type='number' id={item.id} onChange={(event) => onQuanityChange(ind, event.target.value)} className='form-control mx-3 no-of-items' style={{width: '4em', height: '20px'}}/>
 				</div>
 				<div className='d-flex'>
 					<p>Price:</p> 
-					<p className='mx-1' style={{color: 'orange'}}>{item.price * item.no_to_sell}</p>
+					<p className='mx-1' style={{color: 'orange'}}>{item.price * (item.no_to_sell ? item.no_to_sell : 1)}</p>
 				</div>
 		
 			</div>
@@ -43,8 +34,11 @@ function Cart({ item, ind, removeFromCart }) {
 function Home({ data, setData, filtered, currentUser }) {
 	const [cart, setCart] = useState([])
 	const [err, setErr] = useState('')
+	const [currentTotal, setCurrentTotal] = useState(0);
 
-	const currentTotal = cart.reduce((p, c)=> (p + (c.price * (!c.no_to_sell ? 1 : c.no_to_sell))), 0)
+	useEffect(()=>{
+		setCurrentTotal(cart.reduce((p, c)=> (p + (c.price * (!c.no_to_sell ? 1 : c.no_to_sell))), 0));
+	}, [cart])
 
 	useEffect(()=>{
 		fetch('/api/items')
@@ -63,6 +57,16 @@ function Home({ data, setData, filtered, currentUser }) {
 	const removeFromCart = (id)=>{
 		const item = cart.slice(0, id).concat(cart.slice(id+1, cart.length-1))
 		setCart(item)
+	}
+
+	const onQuanityChange = (idx, value) => {
+		// get the array item from index
+		let clone = [...cart]
+		clone[idx].no_to_sell = value
+		setCart(clone)
+		
+		// update the quantity
+		// update the cart
 	}
 
 	const addToCart = (id)=>{
@@ -127,7 +131,7 @@ function Home({ data, setData, filtered, currentUser }) {
 					{
 						cart.map((item, ind) => {
 							return (
-								<Cart item={item} ind={ind} key={ind} removeFromCart={removeFromCart} />
+								<Cart item={item} ind={ind} key={ind} onQuanityChange={onQuanityChange} removeFromCart={removeFromCart} />
 							)
 						})
 					}
