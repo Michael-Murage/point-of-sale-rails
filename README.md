@@ -41,7 +41,7 @@ This user can:
 * View, edit, delete an exiting category's information or create a new category
 * View, edit, delete an exiting supplier's information or create a new supplier.
 * View, edit, delete an exiting item's information or create a new item
-* View, or delete a sale's information. I intentionally left out the ability to edit a receipt's information out
+* View, or delete a sale's information. I intentionally left the ability to edit a receipt's information out
 ### 
 
 ## Local Setup (client and server side)
@@ -65,3 +65,5 @@ React v18.2.0
 Ruby v2.7.4
 
 Rails v6.1.7
+
+Bootstrap v5
