@@ -3,9 +3,9 @@ Deployed link: <a href='https://pos-project-rails.herokuapp.com/'>here</a>
 
 ERD(Entity Relationship Diagram) diagram: <a href='https://drawsql.app/teams/admissions/diagrams/point-of-sale'>here</a>
 
-<img src='./public/screenshot1.png' width='250px' height='200' alt='first screenshot'/>
-<img src='./public/screenshot2.png' width='250px' height='200' alt='second screenshot'/>
-<img src='./public/screenshot3.png' width='250px' height='200' alt='third screenshot'/>
+<img src='./public/screenshot1.png' width='320px' height='200' alt='first screenshot'/>
+<img src='./public/screenshot2.png' width='320px' height='200' alt='second screenshot'/>
+<img src='./public/screenshot3.png' width='320px' height='200' alt='third screenshot'/>
 
 -u Mike -p 240322
 
