@@ -1,6 +1,5 @@
-import React from 'react'
 import { FaUserAlt } from 'react-icons/fa'
-import { BiCategory, BiLogOut, BiSearchAlt } from 'react-icons/bi'
+import { BiCategory, BiLogOut } from 'react-icons/bi'
 import { BsFillCartPlusFill } from 'react-icons/bs'
 import { useLocation } from 'react-router-dom'
 

@@ -29,6 +29,7 @@ function Categories() {
 				toast('Something went wrong with your request')
 			}
 		})
+        // eslint-disable-next-line
 	}, [])
 
 	const editCat = (id) =>{

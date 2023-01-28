@@ -28,6 +28,7 @@ function SaleView() {
 				toast("Something went wrong")
 			}
 		}).catch(err=>toast(err.message))
+        // eslint-disable-next-line
 	},[id])
 
 	const deleteRecord = (id) =>{

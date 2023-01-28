@@ -29,6 +29,7 @@ function Items() {
 			}
 		})
 		.catch((err)=>toast(err.message))
+        // eslint-disable-next-line
 	},[])
 
 	const handleSearch = (e) =>{

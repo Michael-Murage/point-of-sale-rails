@@ -26,6 +26,7 @@ function SupplierEdit() {
 				navigate('/suppliers')
 			}
 		})
+        // eslint-disable-next-line
 	},[])
 
 	const updateSupplier = (e) =>{

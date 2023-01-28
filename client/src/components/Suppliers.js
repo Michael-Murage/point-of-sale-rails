@@ -25,6 +25,7 @@ function Suppliers(){
 				toast('Something went wrong with your request')
 			}
 		})
+        // eslint-disable-next-line
 	},[])
 
 

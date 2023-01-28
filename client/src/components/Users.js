@@ -32,6 +32,7 @@ function Users() {
 				toast('Something went wrong with your request')
 			}
 		})
+        // eslint-disable-next-line
 	}, [])
 
 	const editUser = (id) =>{

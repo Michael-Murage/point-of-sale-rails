@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import { AiOutlineDelete } from 'react-icons/ai'
 
@@ -8,7 +8,7 @@ function Cart({ item, ind, removeFromCart, onQuanityChange }) {
 	return (
 		<div className='row d-flex card cart container my-2' id={ind}>
 			<div className=' col col-sm-3 col-md-3 col-lg-4 px-0 py-2 mx-0 text-center'>
-				<img src={!item.image ? require('../assets/Veggie.jpeg') : item.image} className='cart-img' alt='product image'/>
+				<img src={!item.image ? require('../assets/Veggie.jpeg') : item.image} className='cart-img' alt='product'/>
 			</div>
 			<div className='cart-content col col-sm-9 col-md-9 col-lg-8'>
 				<div className='d-flex mt-1' style={{justifyContent: "space-between"}}>

@@ -13,6 +13,7 @@ function NewSupplier({ currentUser }) {
 				toast('User is not authorized')
 			}
 		})
+        // eslint-disable-next-line
 	}, [])
 
 	const [sup, setSup] = useState({
