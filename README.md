@@ -3,9 +3,15 @@
 
 ERD(Entity Relationship Diagram) diagram: <a href='https://drawsql.app/teams/admissions/diagrams/point-of-sale'>here</a>
 
-<img src='./public/screenshot1.png' width='320px' height='200' alt='first screenshot'/>
-<img src='./public/screenshot2.png' width='320px' height='200' alt='second screenshot'/>
-<img src='./public/screenshot3.png' width='320px' height='200' alt='third screenshot'/>
+<img src='public/assets/screenshot1.png' width='320px' height='200' alt='first screenshot'/>
+<img src='public/assets/screenshot2.png' width='320px' height='200' alt='second screenshot'/>
+<img src='public/assets/screenshot3.png' width='320px' height='200' alt='third screenshot'/>
+<img src='public/assets/screenshot4.png' width='320px' height='200' alt='fourth screenshot'/>
+<img src='public/assets/screenshot5.png' width='320px' height='200' alt='fifth screenshot'/>
+<img src='public/assets/screenshot6.png' width='320px' height='200' alt='sixth screenshot'/>
+<img src='public/assets/screenshot7.png' width='320px' height='200' alt='seventh screenshot'/>
+<img src='public/assets/screenshot8.png' width='320px' height='200' alt='eighth screenshot'/>
+<img src='public/assets/screenshot9.png' width='320px' height='200' alt='nineth screenshot'/>
 
 -u Mike -p 240322
 
