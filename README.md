@@ -1,5 +1,5 @@
 # POS (Point Of Sale) APP
-Deployed link: <a href='https://pos-project-rails.herokuapp.com/'>here</a>
+<!-- Deployed link: <a href='https://pos-project-rails.herokuapp.com/'>here</a> -->
 
 ERD(Entity Relationship Diagram) diagram: <a href='https://drawsql.app/teams/admissions/diagrams/point-of-sale'>here</a>
 
