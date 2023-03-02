@@ -51,6 +51,8 @@ This user can:
 ### 
 
 ## Local Setup (client and server side)
+<i>The setup assumes you have npm, ruby and rails gem installed</i>
+
 To run the server locally, clone the code and run the following commands;
 ```
 bundle install
@@ -66,10 +68,12 @@ npm start --prefix client
 This will set up the client side.
 
 ## Stack
-React v18.2.0
+React
 
-Ruby v2.7.4
+Ruby
 
-Rails v6.1.7
+Rails
 
-Bootstrap v5
+Bootstrap
+
+SQLite3
