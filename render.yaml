@@ -1,0 +1,18 @@
+databases:
+  - name: phase_4_project_pos
+    databaseName: phase_4_project_pos
+    user: phase_4_project_pos
+
+services:
+  - type: web
+    name: phase_4_project_pos
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: phase_4_project_pos
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
