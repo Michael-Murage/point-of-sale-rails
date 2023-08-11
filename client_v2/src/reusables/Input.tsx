@@ -29,7 +29,7 @@ function Input(
   return (
     <div className={`${containerClassName} flex flex-col`}>
       <label 
-        htmlFor="" 
+        htmlFor={id} 
         className={`${labelClassName} text-left text-gray-800 font-light`}
       >
         { label }
@@ -42,7 +42,7 @@ function Input(
         type={type} 
         name="" 
         id={id} 
-        className={`${inputClassName} border rounded-md`} 
+        className={`${inputClassName} border rounded-md border-indigo-200 focus:border-indigo-700 h-8`} 
         value={value}
         onChange={(e) => handleChange(e)}
       />
