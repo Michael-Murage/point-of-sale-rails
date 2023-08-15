@@ -1,31 +1,35 @@
 import React from 'react'
 
 type Props = {
-  type?: 'button' | 'submit',
+  type?: 'button' | 'submit' | 'reset' | undefined,
   handleClick?: Function,
   handleSubmit?: Function,
   containerClassName?: string,
   buttonClassName?: string,
   value?: string,
+  style?: Object
 }
 
 function Button({ 
-  type = 'button', 
+  type, 
   handleClick = (() => {}), 
   handleSubmit = (() => {}), 
   buttonClassName, 
   containerClassName, 
-  value = 'SUBMIT' 
+  value = 'SUBMIT',
+  style = {}
 }: Props) {
   return (
     <div className={`${containerClassName} `}>
-      <input 
+      <button 
         type={type} 
-        value={value}
         className={`${buttonClassName} `}
         onClick={(e) => handleClick(e)}
         onSubmit={(e) => handleSubmit(e)}
-      />
+        style={style}
+      >
+        { value }
+      </button>
     </div>
   )
 }

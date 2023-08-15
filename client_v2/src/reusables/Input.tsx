@@ -42,7 +42,7 @@ function Input(
         type={type} 
         name="" 
         id={id} 
-        className={`${inputClassName} border rounded-md border-indigo-200 focus:border-indigo-700 h-8`} 
+        className={`${inputClassName} border rounded-md border-indigo-200 focus:outline-indigo-700 h-8`} 
         value={value}
         onChange={(e) => handleChange(e)}
       />
